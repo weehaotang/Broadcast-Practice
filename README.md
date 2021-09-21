@@ -6,15 +6,12 @@
 1. 对于聊天软件登录界面，只实现了简单的功能：
 
 首先将LoginActivity的继承结构改成继承自BaseActivity，然后在登录按钮的点击事件里对输入的账号和密码进行判断：如果账号是admin并且密码是123456，就认为登录成功并跳转到MainActivity，否则就提示用户账号或密码错误。
-![截屏2021-09-21 00.59.26](/Users/weehaotang/Library/Application Support/typora-user-images/截屏2021-09-21 00.59.26.png)
 
-![截屏2021-09-21 00.59.44](/Users/weehaotang/Library/Application Support/typora-user-images/截屏2021-09-21 00.59.44.png)
 
 2. 创建一个按钮用于触发强制下线功能。
 
 在按钮的点击事件里发送了一条广播，广播的值为`com.example.broadcastbestpractice.FORCE_OFFLINE`，这条广播就是用于通知程序强制用户下线的。也就是说，强制用户下线的逻辑并不是写在MainActivity里的，而是应该写在接收这条广播的BroadcastReceiver里。这样强制下线的功能就不会依附于任何界面了，不管是在程序的任何地方，只要发出这样一条广播，就可以完成强制下线的操作了。
 
-![截屏2021-09-21 01.00.13](/Users/weehaotang/Library/Application Support/typora-user-images/截屏2021-09-21 01.00.13.png)
 
 **问题：**
 
@@ -22,7 +19,6 @@
 
 **解决方案**：使用AlertDialog.Builder构建下线对话框时调用setCancelable()
 
-![截屏2021-09-21 00.45.51](/Users/weehaotang/Library/Application Support/typora-user-images/截屏2021-09-21 00.45.51.png)
 
 
 
